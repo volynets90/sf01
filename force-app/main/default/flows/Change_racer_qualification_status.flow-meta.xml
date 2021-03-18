@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <assignments>
+        <description>Asign racer to associate qualification</description>
+        <name>Asign_to_Associate</name>
+        <label>Asign to Associate</label>
+        <locationX>580</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Racer_Qualification_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Associate</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_racer_qualification_status</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asign racer to F1 Raser</description>
+        <name>Asign_to_F1_Racer</name>
+        <label>Asign to F1 Racer</label>
+        <locationX>1002</locationX>
+        <locationY>391</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Racer_Qualification_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>F1 Racer</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_racer_qualification_status</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Asign_to_Trainee</name>
+        <label>Asign to Trainee</label>
+        <locationX>163</locationX>
+        <locationY>372</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Racer_Qualification_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Trainee</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_racer_qualification_status</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>When Racer reach 100 points he will be assigned  to Associate title. 300 and higher points - F1 Racer</description>
+        <name>Check_points</name>
+        <label>Check points</label>
+        <locationX>567</locationX>
+        <locationY>316</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Trainee</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Points__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>100.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asign_to_Trainee</targetReference>
+            </connector>
+            <label>Trainee</label>
+        </rules>
+        <rules>
+            <name>Associate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Points__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>300.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asign_to_Associate</targetReference>
+            </connector>
+            <label>Associate</label>
+        </rules>
+        <rules>
+            <name>F1_Racer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Points__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>300.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asign_to_F1_Racer</targetReference>
+            </connector>
+            <label>F1 Racer</label>
+        </rules>
+    </decisions>
+    <description>Change racer qulification status if he reach 100 or 300 points</description>
+    <interviewLabel>Asign racer to {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Change racer qualification status</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_racer_qualification_status</name>
+        <label>Update racer qualification status</label>
+        <locationX>580</locationX>
+        <locationY>672</locationY>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>449</locationX>
+        <locationY>27</locationY>
+        <connector>
+            <targetReference>Check_points</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Racer__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

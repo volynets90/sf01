@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Racer_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Championship  Operator have accsess to only view Racer records created by HR Manager</description>
+        <label>Racers Sharing</label>
+        <sharedTo>
+            <role>Championship_Operator</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Hr_Manager</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

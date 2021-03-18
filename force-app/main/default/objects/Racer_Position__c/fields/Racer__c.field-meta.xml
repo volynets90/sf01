@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Racer__c</fullName>
+    <description>Select racer</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select racer</inlineHelpText>
+    <label>Racer</label>
+    <referenceTo>Racer__c</referenceTo>
+    <relationshipLabel>Racer Positions</relationshipLabel>
+    <relationshipName>Racer</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

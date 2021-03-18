@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Racing_position</fullName>
+    <active>true</active>
+    <description>Chrck Racing pposition</description>
+    <errorConditionFormula>AND(ISPICKVAL(Racer__r.Racer_Qualification_Status__c , &apos;Trainee&apos;), Starting_Position__c  &lt;= 10) ||  AND(ISPICKVAL(Racer__r.Racer_Qualification_Status__c , &apos;Associate&apos;),Starting_Position__c  &lt;= 5) ||  AND(ISPICKVAL(Racer__r.Racer_Qualification_Status__c , &apos;F1 Racer&apos;),Starting_Position__c  &lt;= 3)</errorConditionFormula>
+    <errorDisplayField>Starting_Position__c</errorDisplayField>
+    <errorMessage>We sory, but for Trainee Racing position  # can not be &lt;=10, For Associate &lt;= 5 , For F1 Racer &lt;=3</errorMessage>
+</ValidationRule>
