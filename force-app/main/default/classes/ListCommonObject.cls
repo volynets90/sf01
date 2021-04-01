@@ -2,7 +2,7 @@ public with sharing class ListCommonObject {
     
     public String championatName  {get; set;}
     public String racerName {get; set;}
-    public String startPosition {get; set;}
+    public Double startPosition {get; set;}
     public String status {get; set;}
     public Boolean experienceOnTrack {get; set;}
     public String recordType {get; set;}

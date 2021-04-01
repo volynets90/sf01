@@ -1,24 +1,12 @@
-public with sharing class ListController {
-    
+public with sharing class PorscheTeamListController {
     @AuraEnabled(cacheable=true)
-    public static String  getRacerPosition(Decimal filterYear, String porscheRaers) {
-       //system.debug(filterYear+' -value');
-       List<Racer_Position__c> racersPos = new List<Racer_Position__c>();
-       
-       if(filterYear==null){
-            
-            racersPos = [ SELECT  Name, Championship__r.Name, Championship__r.Championship_Date__c, 
+    public static String getRacersByRecordType(String recordType) {
+
+        List<Racer_Position__c> racersPos =  [ SELECT  Name, Championship__r.Name, Championship__r.Championship_Date__c, 
             Racer__r.Name, Racer__r.Years_in_Racing__c, Status__c, Starting_position__c  
-            FROM Racer_Position__c];
-       }
-       else{
-            racersPos = [ SELECT  Name, Championship__r.Name, Championship__r.Championship_Date__c, 
-            Racer__r.Name, Racer__r.Years_in_Racing__c, Status__c, Starting_position__c  
-            FROM Racer_Position__c WHERE Racer__r.Years_in_Racing__c=:filterYear ];
-       }
+            FROM Racer_Position__c WHERE Racer__r.RecordTypeId=:recordType];
         
         List<ListCommonObject> finalList = new List<ListCommonObject>();
- 
         for (Racer_Position__c r : racersPos) {
        
             ListCommonObject lh = new ListCommonObject();
@@ -31,6 +19,7 @@ public with sharing class ListController {
             finalList.add(lh);
         }
         
+        //system.debug(finalList);
         system.debug(JSON.serialize(racersPos));
         system.debug(racersPos+' RPOS');
         return JSON.serialize(finalList);
