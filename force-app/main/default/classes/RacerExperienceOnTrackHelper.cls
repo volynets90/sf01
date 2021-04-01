@@ -31,13 +31,13 @@ public with sharing class RacerExperienceOnTrackHelper {
                 if (r==r2) {
                     System.debug('Inc '+incomingTackRacer.get(r));
                     Racer_Position__c updRacer=incomingTackRacer.get(r);
-                    updRacer.Experience_in_championship_track__c=true;
+                    //updRacer.Experience_in_championship_track__c=true;
                     forUpdate.add(updRacer);
              
                 }
             }
         }
    
-        update forUpdate;
+       // update forUpdate;
     }
 }
