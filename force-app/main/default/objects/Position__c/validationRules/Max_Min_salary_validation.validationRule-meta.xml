@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Max_Min_salary_validation</fullName>
+    <active>true</active>
+    <description>Max salary cant be less then min salary</description>
+    <errorConditionFormula>Max_salary__c  &lt;  Min_salary__c</errorConditionFormula>
+    <errorDisplayField>Max_salary__c</errorDisplayField>
+    <errorMessage>Max salary cant be less then min salary</errorMessage>
+</ValidationRule>

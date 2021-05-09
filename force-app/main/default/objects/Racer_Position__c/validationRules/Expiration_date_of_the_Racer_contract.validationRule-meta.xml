@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Expiration_date_of_the_Racer_contract</fullName>
-    <active>true</active>
-    <description>A Racer cannot participate in the championship if the contract date has expired</description>
-    <errorConditionFormula>Championship__r.Championship_Date__c  &gt;  Racer__r.Contact_End_Date__c</errorConditionFormula>
-    <errorDisplayField>Championship__c</errorDisplayField>
-    <errorMessage>Sorry, but Racer cannot be assigned for this Championship. Date of Championship is greater, than Racer contract End Date</errorMessage>
-</ValidationRule>
