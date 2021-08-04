@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Validate_opened_closed_date</fullName>
-    <active>true</active>
-    <description>Closed date cant be less then opened date</description>
-    <errorConditionFormula>Opened_at__c  &gt;  Closed_at__c</errorConditionFormula>
-    <errorDisplayField>Closed_at__c</errorDisplayField>
-    <errorMessage>Closed date cant be less then opened date</errorMessage>
-</ValidationRule>

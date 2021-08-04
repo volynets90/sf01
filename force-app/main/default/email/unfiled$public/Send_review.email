@@ -1,4 +1,0 @@
-Greeting! New review created
-Job application: {!Review__c.Job_application__c}
-Type: {!Review__c.Type__c}
-Rating: {!Review__c.Raiting__c}
